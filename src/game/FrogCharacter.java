@@ -17,19 +17,29 @@ public class FrogCharacter extends FrogGameObject{
 	int tongueW= 10;
 	int tongueH= 540;
 	String color= "green";
-	String[] colors= {"blue", "green", "purple", "red"};
+	static BufferedImage[] images=new BufferedImage[4];
+	static String[] colors= {"blue", "green", "purple", "red"};
 	Random random= new Random();
 	
 	void changeColor() {
 		int num = random.nextInt(4);
+		System.out.println("frog color "+num);
+		image = images[num];
 		color = colors[num];
-		if()
+	
 	}
 	
-	void loadImage(String imageFile) {
+	void loadImage() {
 		if(needImage) {
 			try {
-				image = ImageIO.read(this.getClass().getResourceAsStream(imageFile));
+				image = ImageIO.read(this.getClass().getResourceAsStream("bluefrog.png"));
+				images[0] = image;
+				image = ImageIO.read(this.getClass().getResourceAsStream("greenfrog.png"));
+				images[1] = image;
+				image = ImageIO.read(this.getClass().getResourceAsStream("purplefrog.png"));
+				images[2] = image;
+				image = ImageIO.read(this.getClass().getResourceAsStream("redfrog.png"));
+				images[3] = image;
 				gotImage = true;
 			}
 			catch(Exception e) {
@@ -42,13 +52,15 @@ public class FrogCharacter extends FrogGameObject{
 
 	FrogCharacter(int x, int y, int width, int height) {
 		super(x, y, width, height);
-		speed = 10;
+		speed = 15;
 		if(needImage) {
-			loadImage("greenfrog.png");
+			loadImage();
 		}
+		changeColor();
 	}
 	
       void draw(Graphics g) {
+    	  //System.out.println("draw frog");
 		if(gotImage) {
 			g.drawImage(image, x, y, width, height, null);
 		}
@@ -56,6 +68,9 @@ public class FrogCharacter extends FrogGameObject{
 			g.setColor(Color.black);
 			g.fillRect(x, y, width, height);
 		}
+		
+		//g.setColor(Color.RED);
+		//g.drawRect(collisionBox.x, collisionBox.y,collisionBox.width , collisionBox.height);
 		
 		//System.out.println("draw frog");
 		if(tongue) {
