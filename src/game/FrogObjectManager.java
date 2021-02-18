@@ -16,12 +16,10 @@ Random random= new Random();
 int score = 0;
 boolean gameOver = false;
 Font scoreFont;
-FrogObjectManager(){
-	scoreFont = new Font("Monospaced", Font.PLAIN, 68);
-}
-
+	
 FrogObjectManager( FrogCharacter frog){
 	this.frog=frog;
+	scoreFont = new Font("Monospaced", Font.PLAIN, 68);
 	
 	
 }
@@ -51,7 +49,7 @@ FrogObjectManager( FrogCharacter frog){
 	 for(FlyCharacter fly : flys) {
 		 fly.draw(g);
 	 }
-	//hi;
+	
 	 
  }
  
@@ -63,7 +61,7 @@ FrogObjectManager( FrogCharacter frog){
 		}
  }
 
-@Override
+
 public void actionPerformed(ActionEvent arg0) {
 	// TODO Auto-generated method stub
 	addFlyCharacter();

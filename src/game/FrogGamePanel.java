@@ -139,6 +139,7 @@ public class FrogGamePanel extends JPanel implements ActionListener, KeyListener
 		g.drawString("You Lost", 220, 130);
 		g.setFont(startFont);
 		g.drawString("never fear you can always try again", 130, 200);
+		g.drawString("press enter to get back to the main menu", 55, 270);
 	}
 	
 
@@ -159,7 +160,7 @@ public void paintComponent(Graphics g) {
 	
 }
 
-	@Override
+	
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		if(currentState == MENU) {
@@ -178,7 +179,6 @@ public void paintComponent(Graphics g) {
 		repaint();
 	}
 
-	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		System.out.println(e.getKeyCode());
@@ -232,7 +232,6 @@ public void paintComponent(Graphics g) {
 		
 
 
-	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getKeyCode()==KeyEvent.VK_UP) {
@@ -240,7 +239,6 @@ public void paintComponent(Graphics g) {
 		}
 	}
 
-	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
